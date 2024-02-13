@@ -29,10 +29,11 @@
         border-radius: 5px;
     }
     #noButton {
-        position: relative;
+        position: static; /* Use 'static' to ensure it returns to its original position */
+        margin: 10px auto; /* Center button if it was moved */
     }
     img.gif {
-        width: 500px;
+        width: 200px;
         height: auto;
         margin-top: 20px;
     }
@@ -42,7 +43,7 @@
 
 <div class="invitation">
     <h1>Will You Be My Valentine?</h1>
-    <img src="https://media4.giphy.com/media/r7QiDunxBlEVVUgtfh/200.webp?cid=ecf05e47h8l268r3hw6078kgv89zmafx7rn244ky8vyn4ngy&ep=v1_gifs_search&rid=200.webp&ct=g" alt="Frog Gif" id="beforeAnswerGif" class="gif">
+    <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExcmpzejl2b3o3enp2czBveXNnanhrbDk2NzczbTI5aWZicndsZGs3ZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/r7QiDunxBlEVVUgtfh/giphy.gif" alt="Frog Gif" id="beforeAnswerGif" class="gif">
     <div id="answerButtons">
         <button id="yesButton">Yes</button>
         <button id="noButton">No</button>
@@ -51,26 +52,30 @@
         <!-- Response will go here -->
     </div>
     <!-- Audio element for 'No' button hover sound -->
-    <audio id="noHoverSound" src=""C:\Users\UMAR\Downloads\Southway 6.mp3""></audio>
+    <audio id="noHoverSound" src="YOUR_AUDIO_FILE_URL_HERE.mp3"></audio>
 </div>
 
 <script>
     function showInitialView() {
         document.getElementById('beforeAnswerGif').style.display = 'block';
-        document.getElementById('answerButtons').style.display = 'flex'; // Use flex if you want buttons side by side
+        document.getElementById('answerButtons').style.display = 'block'; // Ensure this is 'block' or 'flex' as per your original layout
         document.getElementById('response').style.display = 'none';
         document.getElementById('response').innerHTML = ''; // Clear previous response
+        // Reset 'No' button style to initial
+        document.getElementById('noButton').style.position = 'static';
+        document.getElementById('noButton').style.left = '';
+        document.getElementById('noButton').style.top = '';
     }
 
     document.getElementById('yesButton').addEventListener('click', function() {
-        document.getElementById('response').innerHTML = '<h2>HEHE great! Please copy this link and answer the form :) <br> https://forms.gle/p3iJjWrjEdScoQSS6</h2><img src="https://media4.giphy.com/media/JHsat6hauLInIbWGlc/giphy.webp?cid=ecf05e47ibzkm49lihd0gcl50kvi41u4wnkzbz47kc47gg1l&ep=v1_gifs_search&rid=giphy.webp&ct=g" alt="Happy Frog Gif" class="gif">';
+        document.getElementById('response').innerHTML = '<h2>Yay! You made my day!</h2><img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExc3E4eWoxdXZ3dThicmtoNjRsdzg5cGFkMGdrd29pMGt0bmdqZ3pqZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/JHsat6hauLInIbWGlc/giphy.gif" alt="Happy Frog Gif" class="gif">';
         document.getElementById('beforeAnswerGif').style.display = 'none';
         document.getElementById('answerButtons').style.display = 'none';
         document.getElementById('response').style.display = 'block';
     });
 
     document.getElementById('noButton').addEventListener('click', function() {
-        document.getElementById('response').innerHTML = '<h2>BLEBBBBBB you must answer yes</h2><img src="https://media3.giphy.com/media/ooq1iZ7CkDTXIcBbPU/giphy.webp?cid=790b76116389wrbub95fgblp53hswnol9h0y0l4rrtozmvcp&ep=v1_gifs_search&rid=giphy.webp&ct=g" alt="Sad Frog Gif" class="gif"><br><button id="backButton">Back</button>';
+        document.getElementById('response').innerHTML = '<h2>Oh no! Maybe next time?</h2><img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExam1rNGQzNjUxZ2d3aTFteW9zbWZyMGs5enR3c3E0bDBpcG1tdnA5MiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ooq1iZ7CkDTXIcBbPU/giphy.gif" alt="Sad Frog Gif" class="gif"><br><button id="backButton">Back</button>';
         document.getElementById('beforeAnswerGif').style.display = 'none';
         document.getElementById('answerButtons').style.display = 'none';
         document.getElementById('response').style.display = 'block';
