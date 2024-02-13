@@ -63,6 +63,13 @@
         document.getElementById('noButton').style.position = 'static';
         document.getElementById('noButton').style.left = '';
         document.getElementById('noButton').style.top = '';
+        
+        document.getElementById('beforeAnswerGif').style = '';
+        document.querySelectorAll('.gif').forEach(gif => {
+          gif.style.position = '';
+          gif.style.left = '';
+          gif.style.top = '';
+    });
     }
 
     document.getElementById('yesButton').addEventListener('click', function() {
