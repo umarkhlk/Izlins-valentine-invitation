@@ -1,46 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Be My Valentine?</title>
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Josefin Sans', sans-serif;
-            background-color: #ccffcc;
-            text-align: center;
-            padding: 20px;
-        }
-        .invitation {
-            background: #ffffff;
-            padding: 20px;
-            margin: 20px auto;
-            width: 80%;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        button {
-            padding: 10px 20px;
-            margin: 10px;
-            font-size: 16px;
-            cursor: pointer;
-            border: none;
-            border-radius: 5px;
-        }
-        #noButton {
-            position: static;
-            margin: 10px auto;
-        }
-        img.gif {
-            width: 500px;
-            height: auto;
-            margin-top: 20px;
-            display: block; /* Ensure this is set to block for reset */
-            margin-left: auto;
-            margin-right: auto;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Be My Valentine?</title>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet">
+<style>
+    body {
+        font-family: 'Josefin Sans', sans-serif;
+        background-color: #ccffcc; /* Light green background */
+        text-align: center;
+        padding: 20px;
+    }
+    .invitation {
+        background: #ffffff;
+        padding: 20px;
+        margin: 20px auto;
+        width: 80%;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    button {
+        padding: 10px 20px;
+        margin: 10px;
+        font-size: 16px;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+    }
+    #noButton {
+        position: static; /* Use 'static' to ensure it returns to its original position */
+        margin: 10px auto; /* Center button if it was moved */
+    }
+    img.gif {
+        width: 500px;
+        height: auto;
+        margin-top: 20px;
+    }
+</style>
 </head>
 <body>
 
@@ -54,45 +51,42 @@
     <div id="response" style="display:none;">
         <!-- Response will go here -->
     </div>
-    <audio id="noHoverSound" src=""C:\Users\UMAR\Downloads\Southway 6.mp3""></audio>
 </div>
 
 <script>
-    function resetView() {
+    function showInitialView() {
         document.getElementById('beforeAnswerGif').style.display = 'block';
-        document.getElementById('answerButtons').style.display = 'block';
+        document.getElementById('answerButtons').style.display = 'block'; // Ensure this is 'block' or 'flex' as per your original layout
         document.getElementById('response').style.display = 'none';
-        document.getElementById('response').innerHTML = '';
-        // Reset GIF and button styles
-        document.getElementById('beforeAnswerGif').style = '';
+        document.getElementById('response').innerHTML = ''; // Clear previous response
+        // Reset 'No' button style to initial
+        document.getElementById('noButton').style.position = 'static';
+        document.getElementById('noButton').style.left = '';
+        document.getElementById('noButton').style.top = '';
     }
 
     document.getElementById('yesButton').addEventListener('click', function() {
-        document.getElementById('response').innerHTML = '<h2>HEHE great! Please copy this link and answer the form :) </h2><img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExc3E4eWoxdXZ3dThicmtoNjRsdzg5cGFkMGdrd29pMGt0bmdqZ3pqZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/JHsat6hauLInIbWGlc/giphy.gif" alt="Happy Frog Gif" class="gif">';
+        document.getElementById('response').innerHTML = '<h2>HEHE great! Please copy the link below and answer the form :) <br> https://forms.gle/rPeYDbLTKrcSm9ae8</h2><img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExc3E4eWoxdXZ3dThicmtoNjRsdzg5cGFkMGdrd29pMGt0bmdqZ3pqZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/JHsat6hauLInIbWGlc/giphy.gif" alt="Happy Frog Gif" class="gif">';
         document.getElementById('beforeAnswerGif').style.display = 'none';
         document.getElementById('answerButtons').style.display = 'none';
         document.getElementById('response').style.display = 'block';
     });
 
     document.getElementById('noButton').addEventListener('click', function() {
-        document.getElementById('response').innerHTML = '<h2>BLEBBBBB you must answer yes </h2><img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExam1rNGQzNjUxZ2d3aTFteW9zbWZyMGs5enR3c3E0bDBpcG1tdnA5MiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ooq1iZ7CkDTXIcBbPU/giphy.gif" alt="Sad Frog Gif" class="gif"><br><button id="backButton">Back</button>';
+        document.getElementById('response').innerHTML = '<h2>BLEBBBB you must answer yes </h2><img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExam1rNGQzNjUxZ2d3aTFteW9zbWZyMGs5enR3c3E0bDBpcG1tdnA5MiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ooq1iZ7CkDTXIcBbPU/giphy.gif" alt="Sad Frog Gif" class="gif"><br><button id="backButton">Back</button>';
         document.getElementById('beforeAnswerGif').style.display = 'none';
         document.getElementById('answerButtons').style.display = 'none';
         document.getElementById('response').style.display = 'block';
 
-        document.getElementById('backButton').addEventListener('click', resetView);
+        // Add event listener to the "Back" button after it's added to the DOM
+        document.getElementById('backButton').addEventListener('click', showInitialView);
     });
 
-    // Example of a workaround for the audio play issue
-    let audioPlayed = false;
+    // Play sound when hovering over the 'No' button
     document.getElementById('noButton').addEventListener('mouseover', function() {
-        if (!audioPlayed) {
-            // Try playing the audio to trigger browser's autoplay policy
-            document.getElementById('noHoverSound').play().catch(e => console.log("Audio play failed on first try."));
-            audioPlayed = true;
-        } else {
-            document.getElementById('noHoverSound').play();
-        }
+        document.getElementById('noHoverSound').play();
+    });
+
     document.getElementById('noButton').addEventListener('mouseover', function(event) {
         const noButton = event.target;
         const deltaX = Math.random() * 100 - 50;
@@ -104,7 +98,6 @@
         noButton.style.position = 'absolute';
         noButton.style.left = newX + 'px';
         noButton.style.top = newY + 'px';
-    });
     });
 </script>
 
