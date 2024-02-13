@@ -93,6 +93,17 @@
         } else {
             document.getElementById('noHoverSound').play();
         }
+    document.getElementById('noButton').addEventListener('mouseover', function(event) {
+        const noButton = event.target;
+        const deltaX = Math.random() * 100 - 50;
+        const deltaY = Math.random() * 100 - 50;
+        let newX = noButton.offsetLeft + deltaX;
+        let newY = noButton.offsetTop + deltaY;
+        newX = Math.max(0, Math.min(newX, window.innerWidth - noButton.offsetWidth));
+        newY = Math.max(0, Math.min(newY, window.innerHeight - noButton.offsetHeight));
+        noButton.style.position = 'absolute';
+        noButton.style.left = newX + 'px';
+        noButton.style.top = newY + 'px';
     });
 </script>
 
