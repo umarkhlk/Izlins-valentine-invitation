@@ -32,7 +32,7 @@
         position: relative;
     }
     img.gif {
-        width: 600px;
+        width: 500px;
         height: auto;
         margin-top: 20px;
     }
@@ -42,7 +42,7 @@
 
 <div class="invitation">
     <h1>Will You Be My Valentine?</h1>
-    <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExMHF3MmJlYjJzcGNxZm16aGQwY3N1NXAzNmo5ZWFxdWJmczRld2U4dSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/r7QiDunxBlEVVUgtfh/giphy.gif" alt="Frog Gif" id="beforeAnswerGif" class="gif">
+    <img src="YOUR_INITIAL_FROG_GIF_URL_HERE" alt="Frog Gif" id="beforeAnswerGif" class="gif">
     <div id="answerButtons">
         <button id="yesButton">Yes</button>
         <button id="noButton">No</button>
@@ -50,21 +50,38 @@
     <div id="response" style="display:none;">
         <!-- Response will go here -->
     </div>
+    <!-- Audio element for 'No' button hover sound -->
+    <audio id="noHoverSound" src="YOUR_AUDIO_FILE_URL_HERE.mp3"></audio>
 </div>
 
 <script>
+    function showInitialView() {
+        document.getElementById('beforeAnswerGif').style.display = 'block';
+        document.getElementById('answerButtons').style.display = 'flex'; // Use flex if you want buttons side by side
+        document.getElementById('response').style.display = 'none';
+        document.getElementById('response').innerHTML = ''; // Clear previous response
+    }
+
     document.getElementById('yesButton').addEventListener('click', function() {
+        document.getElementById('response').innerHTML = '<h2>Yay! You made my day!</h2><img src="YOUR_YES_RESPONSE_FROG_GIF_URL_HERE" alt="Happy Frog Gif" class="gif">';
         document.getElementById('beforeAnswerGif').style.display = 'none';
         document.getElementById('answerButtons').style.display = 'none';
         document.getElementById('response').style.display = 'block';
-        document.getElementById('response').innerHTML = '<h2>Great! Please copy this link and answer the form :) <br> https://forms.gle/D7zDJnyYqNmhAsx38</h2><img src="https://media4.giphy.com/media/JHsat6hauLInIbWGlc/giphy.webp?cid=ecf05e475ky5n2iwmnkcnlyhgq8iepf7gfe4l3eo0bmemrny&ep=v1_gifs_search&rid=giphy.webp&ct=g" alt="Happy Frog Gif" class="gif">';
     });
 
     document.getElementById('noButton').addEventListener('click', function() {
+        document.getElementById('response').innerHTML = '<h2>Oh no! Maybe next time?</h2><img src="YOUR_NO_RESPONSE_FROG_GIF_URL_HERE" alt="Sad Frog Gif" class="gif"><br><button id="backButton">Back</button>';
         document.getElementById('beforeAnswerGif').style.display = 'none';
         document.getElementById('answerButtons').style.display = 'none';
         document.getElementById('response').style.display = 'block';
-        document.getElementById('response').innerHTML = '<h2>BLEBBBBB you must answer yes</h2><img src="https://media3.giphy.com/media/ooq1iZ7CkDTXIcBbPU/giphy.webp?cid=790b76116389wrbub95fgblp53hswnol9h0y0l4rrtozmvcp&ep=v1_gifs_search&rid=giphy.webp&ct=g" alt="Sad Frog Gif" class="gif">';
+
+        // Add event listener to the "Back" button after it's added to the DOM
+        document.getElementById('backButton').addEventListener('click', showInitialView);
+    });
+
+    // Play sound when hovering over the 'No' button
+    document.getElementById('noButton').addEventListener('mouseover', function() {
+        document.getElementById('noHoverSound').play();
     });
 
     document.getElementById('noButton').addEventListener('mouseover', function(event) {
@@ -73,7 +90,6 @@
         const deltaY = Math.random() * 100 - 50;
         let newX = noButton.offsetLeft + deltaX;
         let newY = noButton.offsetTop + deltaY;
-        // Keep button within the invitation area
         newX = Math.max(0, Math.min(newX, window.innerWidth - noButton.offsetWidth));
         newY = Math.max(0, Math.min(newY, window.innerHeight - noButton.offsetHeight));
         noButton.style.position = 'absolute';
